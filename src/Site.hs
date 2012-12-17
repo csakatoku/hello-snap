@@ -58,6 +58,17 @@ handleNewUser = method GET handleForm <|> method POST handleFormSubmit
     handleForm = render "new_user"
     handleFormSubmit = registerUser "login" "password" >> redirect "/"
 
+-----
+handleAbout :: Handler App App ()
+handleAbout = method GET getter
+    where
+      getter = render "about"
+
+----
+handleContact :: Handler App App ()
+handleContact = method GET getter
+    where
+      getter = render "contact"
 
 ------------------------------------------------------------------------------
 -- | The application's routes.
@@ -65,6 +76,8 @@ routes :: [(ByteString, Handler App App ())]
 routes = [ ("/login",    with auth handleLoginSubmit)
          , ("/logout",   with auth handleLogout)
          , ("/new_user", with auth handleNewUser)
+         , ("/about",    handleAbout)
+         , ("/contact",  handleContact)
          , ("",          serveDirectory "static")
          ]
 

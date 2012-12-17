@@ -1,6 +1,7 @@
 <apply template="base">
 
   <ifLoggedIn>
+    <h2>It works!</h2>
     <p>
       This is a simple demo page served using
       <a href="http://snapframework.com/docs/tutorials/heist">Heist</a>
